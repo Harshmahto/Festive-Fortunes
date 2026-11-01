@@ -58,4 +58,4 @@ The dataset used in this project, `Diwali Sales Data.csv` [kaggle](https://www.k
 
 ## 🖼️ Dashboard Preview
 
-![Festive Fortunes Dashbord](image.png)
+![Festive Fortunes Dashbord](https://github.com/Harshmahto/Festive-Fortunes/blob/main/image.png)
