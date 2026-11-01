@@ -1,0 +1,111 @@
+
+#Created a table first for importing the .csv file
+
+CREATE TABLE Festive_Fortunes_Data (
+    user_id INT,
+    cust_name VARCHAR(255),
+    product_id VARCHAR(50),
+    gender VARCHAR(10),
+    age_group VARCHAR(10),
+    age INT,
+    marital_status INT,
+    state VARCHAR(100),
+    zone VARCHAR(50),
+    occupation VARCHAR(100),
+    product_category VARCHAR(100),
+    orders INT,
+    amount NUMERIC(10,2),
+    status NUMERIC(10,2), -- could also be NULL
+    unnamed1 NUMERIC(10,2) -- looks like unnecessary column
+);
+
+
+#importing the table from .csv
+
+COPY Festive_Fortunes_Data (
+    user_id, cust_name, product_id, gender, age_group, age, marital_status, state, zone, occupation, product_category, orders, amount
+)
+FROM 'C:\Program Files\PostgreSQL\17\Diwali_Sales_Cleaned.csv'
+DELIMITER ',' 
+CSV HEADER;
+
+
+#showing the entire table 
+
+select *
+from Festive_Fortunes_Data
+
+
+#showing the user_id 
+
+Select user_id
+from Festive_Fortunes_Data
+
+#showing the all female and male buying the products
+
+Select gender, count(*)
+from Festive_Fortunes_Data
+Group By gender;
+
+#showing the number of customer buys the product
+
+Select count(cust_name)
+from Festive_Fortunes_Data
+
+#showing the number marital people are buys the product
+
+Select count(marital_status)
+from Festive_Fortunes_Data
+where marital_status = 0;
+
+#showing how many states
+
+Select distinct state
+from Festive_Fortunes_Data
+
+#showing how many zone cover
+
+Select distinct zone
+from Festive_Fortunes_Data
+
+#showing how many zone highest sales
+
+Select zone,count(*)
+from Festive_Fortunes_Data
+Group By zone;
+
+#showing how many occupation buys the product
+
+Select Distinct occupation
+From Festive_Fortunes_Data
+
+#showing how many buyer from IT sector
+
+Select Count(occupation)
+from Festive_Fortunes_Data
+where occupation = 'IT Sector';
+
+#Showing the orders
+
+Select sum(Orders)
+From Festive_Fortunes_Data
+
+#showing how many product category
+
+select Distinct count(product_category)
+from Festive_Fortunes_Data
+
+#showing the total product
+
+select Distinct product_category
+from Festive_Fortunes_Data
+
+#showing the total amount of the sales
+
+select sum(amount)
+from Festive_Fortunes_Data
+
+#showing the average amount of the sales
+
+select avg(amount)
+from Festive_Fortunes_Data
